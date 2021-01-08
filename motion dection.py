@@ -2,13 +2,6 @@ import cv2
 
 video = cv2.VideoCapture(0)
 
-frame_width = int(video.get(3))
-frame_height = int(video.get(4))
-
-size = (frame_width, frame_height)
-out = cv2.VideoWriter("demo.avi", cv2.VideoWriter_fourcc(*"MJPG"), 10, size)
-print(video)
-
 while video.isOpened():
 
     if cv2.waitKey(1) == ord('q'):
@@ -30,9 +23,7 @@ while video.isOpened():
             continue
         x, y, w, h = cv2.boundingRect(c)
         cv2.rectangle(frame1, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    out.write(frame2)
     cv2.imshow("frame", frame1)
-    cv2.imwrite("frame.png", frame2)
 
 video.release()
 out.release()
