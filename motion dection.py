@@ -1,13 +1,12 @@
 import cv2
 
-video = cv2.VideoCapture("demo.mp4")
-# video = cv2.VideoCapture(0)
+video = cv2.VideoCapture(0)
 
 frame_width = int(video.get(3))
 frame_height = int(video.get(4))
 
 size = (frame_width, frame_height)
-out = cv2.VideoWriter("demo1.avi", cv2.VideoWriter_fourcc(*"MJPG"), 10, size)
+out = cv2.VideoWriter("demo.avi", cv2.VideoWriter_fourcc(*"MJPG"), 10, size)
 print(video)
 
 while video.isOpened():
