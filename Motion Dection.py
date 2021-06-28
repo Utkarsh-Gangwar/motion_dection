@@ -1,5 +1,6 @@
 import cv2
 
+#making a object to capture video from camera
 video = cv2.VideoCapture(0)
 
 frame_width = int(video.get(3))
@@ -10,14 +11,15 @@ out = cv2.VideoWriter("demo1.avi", cv2.VideoWriter_fourcc(*"MJPG"), 10, size)
 print(video)
 
 while video.isOpened():
-
+    #to breake while loop when presed 'q'
     if cv2.waitKey(1) == ord('q'):
         break
 
-
+    #making 2 object to compare
     check, frame1 = video.read()
     check, frame2 = video.read()
-
+    
+    #if failes to take video it will break
     if not check:
         break
     diff = cv2.absdiff(frame1, frame2)
